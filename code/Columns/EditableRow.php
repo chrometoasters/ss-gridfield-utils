@@ -346,7 +346,7 @@ class EditableRow extends RequestHandler implements GridField_HTMLProvider, Grid
                 if ($editable->getFields()) {
                     $fields = $editable->getFields();
                 } else {
-                    $fields = \Object::create($editable->getItemRequestClass(), $grid, $editable, $record,
+                    $fields = \SS_Object::create($editable->getItemRequestClass(), $grid, $editable, $record,
                         $grid->getForm()->getController(), $editable->getName())->ItemEditForm()->Fields();
                 }
             }

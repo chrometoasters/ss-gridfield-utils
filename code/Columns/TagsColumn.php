@@ -20,7 +20,7 @@ use SS_List;
 use Form;
 use FieldList;
 use Controller;
-use Object;
+use SS_Object;
 use SS_HTTPResponse_Exception;
 
 class TagsColumn implements GridField_ColumnProvider, GridField_DataManipulator, GridField_URLHandler, GridField_SaveHandler
@@ -163,7 +163,7 @@ class TagsColumn implements GridField_ColumnProvider, GridField_DataManipulator,
         if ($item = singleton($model)->get()->filter($this->referenceField, $params['tag'])->first()) {
             $params['record']->{$this->relation}()->add($item);
         } else {
-            $item = Object::create($model);
+            $item = SS_Object::create($model);
             $item->{$this->referenceField} = $params['tag'];
             $item->write();
             $params['record']->{$this->relation}()->add($item);
@@ -241,7 +241,7 @@ class TagsColumn implements GridField_ColumnProvider, GridField_DataManipulator,
         }
 
 
-        return Object::create(
+        return SS_Object::create(
             'Select2Field',
             $this->relation,
             $list,

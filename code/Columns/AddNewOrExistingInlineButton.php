@@ -16,7 +16,7 @@ if (!class_exists('GridFieldAddNewInlineButton')) {
 
 use Select2Field;
 use Convert;
-use Object;
+use SS_Object;
 use ManyManyList;
 use Form;
 use DataList;
@@ -255,7 +255,7 @@ class AddNewOrExistingInlineButton extends \GridFieldAddNewInlineButton implemen
             if (is_callable($this->valFieldCallback)) {
                 return call_user_func($this->valFieldCallback, $record);
             } else {
-                return Object::create($this->valFieldCallback, $this->valFieldAfterSave, '');
+                return SS_Object::create($this->valFieldCallback, $this->valFieldAfterSave, '');
             }
         }
 
@@ -267,7 +267,7 @@ class AddNewOrExistingInlineButton extends \GridFieldAddNewInlineButton implemen
         $attrs = '';
 
         if ($grid->getList()) {
-            $record = Object::create($grid->getModelClass());
+            $record = SS_Object::create($grid->getModelClass());
         } else {
             $record = null;
         }

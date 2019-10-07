@@ -331,7 +331,7 @@ class AddNewInlineExtended extends \RequestHandler implements \GridField_HTMLPro
         $itemIds = [];
 
         foreach ($value[$componentName] as $fields) {
-            $item = isset($fields['_modelClass']) ? \Object::create($fields['_modelClass']) : \Object::create($class);
+            $item = isset($fields['_modelClass']) ? \SS_Object::create($fields['_modelClass']) : \SS_Object::create($class);
 
             $form->loadDataFrom($fields);
             $form->saveInto($item);
@@ -461,7 +461,7 @@ class AddNewInlineExtended extends \RequestHandler implements \GridField_HTMLPro
                 $class = $grid->getModelClass();
             }
 
-            $record = \Object::create($class);
+            $record = \SS_Object::create($class);
 
             if ($grid->List && ($grid->List instanceof \HasManyList) && $grid->Form && $grid->Form->Record) {
                 $record->{$grid->Name} = $grid->Form->Record;
